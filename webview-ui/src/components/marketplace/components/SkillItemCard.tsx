@@ -13,13 +13,32 @@ import {
 	DialogHeader,
 	DialogTitle,
 } from "@/components/ui/dialog"
+import {
+	AlertDialog,
+	AlertDialogAction,
+	AlertDialogCancel,
+	AlertDialogContent,
+	AlertDialogDescription,
+	AlertDialogFooter,
+	AlertDialogHeader,
+	AlertDialogTitle,
+} from "@/components/ui"
+import { StandardTooltip } from "@/components/ui"
 import { useExtensionState } from "@/context/ExtensionStateContext"
+
+interface ItemInstalledMetadata {
+	type: string
+}
 
 interface SkillItemCardProps {
 	skill: SkillMarketplaceItem
+	installed: {
+		project: ItemInstalledMetadata | undefined
+		global: ItemInstalledMetadata | undefined
+	}
 }
 
-export const SkillItemCard: React.FC<SkillItemCardProps> = ({ skill }) => {
+export const SkillItemCard: React.FC<SkillItemCardProps> = ({ skill, installed }) => {
 	const { t } = useAppTranslation()
 	const { cwd } = useExtensionState()
 	const hasWorkspace = !!cwd
@@ -28,6 +47,14 @@ export const SkillItemCard: React.FC<SkillItemCardProps> = ({ skill }) => {
 	const [isInstalling, setIsInstalling] = useState(false)
 	const [installationComplete, setInstallationComplete] = useState(false)
 	const [validationError, setValidationError] = useState<string | null>(null)
+	const [showRemoveConfirm, setShowRemoveConfirm] = useState(false)
+	const [removeTarget, setRemoveTarget] = useState<"project" | "global">("project")
+	const [removeError, setRemoveError] = useState<string | null>(null)
+
+	// Determine installation status
+	const isInstalledGlobally = !!installed.global
+	const isInstalledInProject = !!installed.project
+	const isInstalled = isInstalledGlobally || isInstalledInProject
 
 	const handleViewOnGitHub = () => {
 		vscode.postMessage({ type: "openExternal", url: skill.githubUrl })
@@ -57,7 +84,7 @@ export const SkillItemCard: React.FC<SkillItemCardProps> = ({ skill }) => {
 		})
 	}
 
-	// Listen for installation result messages
+	// Listen for installation and removal result messages
 	useEffect(() => {
 		const handleMessage = (event: MessageEvent) => {
 			const message = event.data
@@ -73,6 +100,17 @@ export const SkillItemCard: React.FC<SkillItemCardProps> = ({ skill }) => {
 				} else {
 					setValidationError(message.error || t("marketplace:install.failed"))
 					setInstallationComplete(false)
+				}
+			}
+			if (message.type === "marketplaceRemoveResult" && message.slug === skill.id) {
+				if (message.success) {
+					// Removal succeeded - refresh marketplace data
+					vscode.postMessage({
+						type: "fetchMarketplaceData",
+					})
+				} else {
+					// Removal failed - show error message to user
+					setRemoveError(message.error || t("marketplace:items.unknownError"))
 				}
 			}
 		}
@@ -100,16 +138,59 @@ export const SkillItemCard: React.FC<SkillItemCardProps> = ({ skill }) => {
 						</div>
 					</div>
 					<div className="flex items-center gap-1">
-						<Button size="sm" variant="primary" className="text-xs h-5 py-0 px-2" onClick={handleOpenModal}>
-							{t("marketplace:skills.install")}
-						</Button>
+						{isInstalled ? (
+							/* Single Remove button when installed */
+							<StandardTooltip
+								content={
+									isInstalledInProject
+										? t("marketplace:items.card.removeProjectTooltip")
+										: t("marketplace:items.card.removeGlobalTooltip")
+								}>
+								<Button
+									size="sm"
+									variant="secondary"
+									className="text-xs h-5 py-0 px-2"
+									onClick={() => {
+										// Determine which installation to remove (prefer project over global)
+										const target = isInstalledInProject ? "project" : "global"
+										setRemoveTarget(target)
+										setShowRemoveConfirm(true)
+									}}>
+									{t("marketplace:items.card.remove")}
+								</Button>
+							</StandardTooltip>
+						) : (
+							/* Single Install button when not installed */
+							<Button
+								size="sm"
+								variant="primary"
+								className="text-xs h-5 py-0 px-2"
+								onClick={handleOpenModal}>
+								{t("marketplace:skills.install")}
+							</Button>
+						)}
+
+						{/* Error message display */}
+						{removeError && (
+							<div className="text-vscode-errorForeground text-sm mt-2">
+								{t("marketplace:items.removeFailed", { error: removeError })}
+							</div>
+						)}
 					</div>
 				</div>
 
 				<p className="my-2 text-vscode-foreground">{skill.description}</p>
 
-				{/* Category badge */}
+				{/* Installation status badges and category */}
 				<div className="relative flex flex-wrap gap-1 my-2">
+					{/* Installation status badge */}
+					{isInstalled && (
+						<span className="text-xs px-2 py-0.5 rounded-sm h-5 flex items-center bg-green-600/20 text-green-400 border border-green-600/30 shrink-0">
+							{t("marketplace:items.card.installed")}
+						</span>
+					)}
+
+					{/* Category badge */}
 					<span className="text-xs px-2 py-0.5 rounded-sm h-5 flex items-center bg-vscode-badge-background text-vscode-badge-foreground">
 						{displayCategory}
 					</span>
@@ -199,6 +280,36 @@ export const SkillItemCard: React.FC<SkillItemCardProps> = ({ skill }) => {
 					</DialogFooter>
 				</DialogContent>
 			</Dialog>
+
+			{/* Remove Confirmation Dialog */}
+			<AlertDialog open={showRemoveConfirm} onOpenChange={setShowRemoveConfirm}>
+				<AlertDialogContent>
+					<AlertDialogHeader>
+						<AlertDialogTitle>{t("marketplace:removeConfirm.skill.title")}</AlertDialogTitle>
+						<AlertDialogDescription>
+							{t("marketplace:removeConfirm.skill.message", { skillName: displayName })}
+						</AlertDialogDescription>
+					</AlertDialogHeader>
+					<AlertDialogFooter>
+						<AlertDialogCancel>{t("marketplace:removeConfirm.cancel")}</AlertDialogCancel>
+						<AlertDialogAction
+							onClick={() => {
+								// Clear any previous error
+								setRemoveError(null)
+
+								vscode.postMessage({
+									type: "removeInstalledMarketplaceItem",
+									mpItem: skill,
+									mpInstallOptions: { target: removeTarget },
+								})
+
+								setShowRemoveConfirm(false)
+							}}>
+							{t("marketplace:removeConfirm.confirm")}
+						</AlertDialogAction>
+					</AlertDialogFooter>
+				</AlertDialogContent>
+			</AlertDialog>
 		</>
 	)
 }

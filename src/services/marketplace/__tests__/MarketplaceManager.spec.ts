@@ -68,10 +68,22 @@ const mockContext = {
 // Mock fs
 vi.mock("fs/promises", () => ({
 	readFile: vi.fn(),
+	readdir: vi.fn(),
 	access: vi.fn(),
 	writeFile: vi.fn(),
 	mkdir: vi.fn(),
 }))
+
+// kilocode_change start - Mock roo-config
+vi.mock("../../roo-config", () => ({
+	getGlobalRooDirectory: () => "/home/user/.kilocode",
+}))
+
+// Mock globalContext
+vi.mock("../../../utils/globalContext", () => ({
+	ensureSettingsDirectoryExists: vi.fn().mockResolvedValue("/home/user/.kilocode"),
+}))
+// kilocode_change end
 
 // Mock yaml
 vi.mock("yaml", () => ({
@@ -395,4 +407,100 @@ describe("MarketplaceManager", () => {
 			expect(manager["configLoader"].clearCache).toHaveBeenCalled()
 		})
 	})
+
+	// kilocode_change start - Tests for skill installation metadata
+	describe("getInstallationMetadata", () => {
+		it("should detect installed skills in project directory", async () => {
+			const fs = await import("fs/promises")
+
+			// Mock readdir to return skill directories
+			vi.mocked(fs.readdir).mockImplementation(async (dirPath: any) => {
+				if (dirPath === "/test/workspace/.kilocode/skills") {
+					return [
+						{ name: "test-skill", isDirectory: () => true },
+						{ name: "another-skill", isDirectory: () => true },
+					] as any
+				}
+				throw new Error("ENOENT")
+			})
+
+			// Mock access to check for SKILL.md files
+			vi.mocked(fs.access).mockImplementation(async (filePath: any) => {
+				if (
+					filePath === "/test/workspace/.kilocode/skills/test-skill/SKILL.md" ||
+					filePath === "/test/workspace/.kilocode/skills/another-skill/SKILL.md"
+				) {
+					return undefined
+				}
+				throw new Error("ENOENT")
+			})
+
+			// Mock readFile to return empty for other files
+			vi.mocked(fs.readFile).mockRejectedValue(new Error("ENOENT"))
+
+			const metadata = await manager.getInstallationMetadata()
+
+			expect(metadata.project["test-skill"]).toEqual({ type: "skill" })
+			expect(metadata.project["another-skill"]).toEqual({ type: "skill" })
+		})
+
+		it("should detect installed skills in global directory", async () => {
+			const fs = await import("fs/promises")
+
+			// Mock readdir to return skill directories
+			vi.mocked(fs.readdir).mockImplementation(async (dirPath: any) => {
+				if (dirPath === "/home/user/.kilocode/skills") {
+					return [{ name: "global-skill", isDirectory: () => true }] as any
+				}
+				throw new Error("ENOENT")
+			})
+
+			// Mock access to check for SKILL.md files
+			vi.mocked(fs.access).mockImplementation(async (filePath: any) => {
+				if (filePath === "/home/user/.kilocode/skills/global-skill/SKILL.md") {
+					return undefined
+				}
+				throw new Error("ENOENT")
+			})
+
+			// Mock readFile to return empty for other files
+			vi.mocked(fs.readFile).mockRejectedValue(new Error("ENOENT"))
+
+			const metadata = await manager.getInstallationMetadata()
+
+			expect(metadata.global["global-skill"]).toEqual({ type: "skill" })
+		})
+
+		it("should not include directories without SKILL.md", async () => {
+			const fs = await import("fs/promises")
+
+			// Mock readdir to return skill directories
+			vi.mocked(fs.readdir).mockImplementation(async (dirPath: any) => {
+				if (dirPath === "/test/workspace/.kilocode/skills") {
+					return [
+						{ name: "valid-skill", isDirectory: () => true },
+						{ name: "invalid-skill", isDirectory: () => true },
+					] as any
+				}
+				throw new Error("ENOENT")
+			})
+
+			// Mock access to only succeed for valid-skill
+			vi.mocked(fs.access).mockImplementation(async (filePath: any) => {
+				if (filePath === "/test/workspace/.kilocode/skills/valid-skill/SKILL.md") {
+					return undefined
+				}
+				throw new Error("ENOENT")
+			})
+
+			// Mock readFile to return empty for other files
+			vi.mocked(fs.readFile).mockRejectedValue(new Error("ENOENT"))
+
+			const metadata = await manager.getInstallationMetadata()
+
+			expect(metadata.project["valid-skill"]).toEqual({ type: "skill" })
+			expect(metadata.project["invalid-skill"]).toBeUndefined()
+		})
+	})
+	// kilocode_change end
 })
