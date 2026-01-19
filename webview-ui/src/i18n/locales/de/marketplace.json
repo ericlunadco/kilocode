@@ -147,7 +147,11 @@
 		},
 		"mcp": {
 			"title": "MCP-Server entfernen",
-			"message": "Bist du sicher, dass du den MCP-Server „{{mcpName}}“ entfernen möchtest?"
+			"message": "Bist du sicher, dass du den MCP-Server \"{{mcpName}}\" entfernen möchtest?"
+		},
+		"skill": {
+			"title": "Skill entfernen",
+			"message": "Bist du sicher, dass du den Skill \"{{skillName}}\" entfernen möchtest?"
 		},
 		"cancel": "Abbrechen",
 		"confirm": "Entfernen"

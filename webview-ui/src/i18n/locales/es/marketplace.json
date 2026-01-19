@@ -149,6 +149,10 @@
 			"title": "Eliminar servidor MCP",
 			"message": "¿Estás seguro de que quieres eliminar el servidor MCP \"{{mcpName}}\"?"
 		},
+		"skill": {
+			"title": "Eliminar habilidad",
+			"message": "¿Estás seguro de que quieres eliminar la habilidad \"{{skillName}}\"?"
+		},
 		"cancel": "Cancelar",
 		"confirm": "Eliminar"
 	},

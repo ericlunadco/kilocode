@@ -149,6 +149,10 @@
 			"title": "Supprimer le serveur MCP",
 			"message": "Êtes-vous sûr de vouloir supprimer le serveur MCP « {{mcpName}} » ?"
 		},
+		"skill": {
+			"title": "Supprimer la compétence",
+			"message": "Es-tu sûr de vouloir supprimer la compétence « {{skillName}} » ?"
+		},
 		"cancel": "Annuler",
 		"confirm": "Supprimer"
 	},

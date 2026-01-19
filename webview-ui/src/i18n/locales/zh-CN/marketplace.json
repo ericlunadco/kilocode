@@ -147,6 +147,10 @@
 			"title": "删除 MCP 服务器",
 			"message": "您确定要删除 MCP 服务器\"{{mcpName}}\"吗？"
 		},
+		"skill": {
+			"title": "删除技能",
+			"message": "您确定要删除技能\"{{skillName}}\"吗？"
+		},
 		"cancel": "取消",
 		"confirm": "删除"
 	},

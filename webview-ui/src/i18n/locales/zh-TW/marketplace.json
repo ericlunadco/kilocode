@@ -147,6 +147,10 @@
 			"title": "移除 MCP 伺服器",
 			"message": "您確定要移除 MCP 伺服器「{{mcpName}}」嗎？"
 		},
+		"skill": {
+			"title": "移除技能",
+			"message": "您確定要移除技能「{{skillName}}」嗎？"
+		},
 		"cancel": "取消",
 		"confirm": "移除"
 	},

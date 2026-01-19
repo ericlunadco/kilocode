@@ -147,6 +147,10 @@
 			"title": "Xóa máy chủ MCP",
 			"message": "Bạn có chắc chắn muốn xóa máy chủ MCP \"{{mcpName}}\" không?"
 		},
+		"skill": {
+			"title": "Xóa kỹ năng",
+			"message": "Bạn có chắc chắn muốn xóa kỹ năng \"{{skillName}}\" không?"
+		},
 		"cancel": "Hủy",
 		"confirm": "Xóa"
 	},

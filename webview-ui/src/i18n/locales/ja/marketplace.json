@@ -147,6 +147,10 @@
 			"title": "MCPサーバーを削除",
 			"message": "MCPサーバー「{{mcpName}}」を本当に削除しますか？"
 		},
+		"skill": {
+			"title": "スキルを削除",
+			"message": "スキル「{{skillName}}」を本当に削除しますか？"
+		},
 		"cancel": "キャンセル",
 		"confirm": "削除"
 	},

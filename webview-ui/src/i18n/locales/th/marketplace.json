@@ -147,6 +147,10 @@
 			"title": "ลบ MCP Server",
 			"message": "คุณแน่ใจหรือไม่ว่าต้องการลบ MCP server \"{{mcpName}}\"?"
 		},
+		"skill": {
+			"title": "ลบทักษะ",
+			"message": "คุณแน่ใจหรือไม่ว่าต้องการลบทักษะ \"{{skillName}}\"?"
+		},
 		"cancel": "ยกเลิก",
 		"confirm": "ลบ"
 	},
