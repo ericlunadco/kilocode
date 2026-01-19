@@ -1,6 +1,6 @@
 // kilocode_change new file
 
-import React from "react"
+import React, { useState } from "react"
 import { SkillMarketplaceItem } from "@roo-code/types"
 import { vscode } from "@/utils/vscode"
 import { useAppTranslation } from "@/i18n/TranslationContext"
@@ -12,9 +12,23 @@ interface SkillItemCardProps {
 
 export const SkillItemCard: React.FC<SkillItemCardProps> = ({ skill }) => {
 	const { t } = useAppTranslation()
+	const [isInstalling, setIsInstalling] = useState(false)
 
 	const handleViewOnGitHub = () => {
 		vscode.postMessage({ type: "openExternal", url: skill.githubUrl })
+	}
+
+	const handleInstall = (target: "project" | "global") => {
+		setIsInstalling(true)
+		vscode.postMessage({
+			type: "installMarketplaceItem",
+			mpItem: skill,
+			mpInstallOptions: { target },
+		})
+		// Note: The installing state will be reset when the component re-renders
+		// after receiving the installation result. For now, we'll reset after a timeout
+		// as a fallback.
+		setTimeout(() => setIsInstalling(false), 5000)
 	}
 
 	const { displayName, displayCategory } = skill
@@ -37,10 +51,20 @@ export const SkillItemCard: React.FC<SkillItemCardProps> = ({ skill }) => {
 				<div className="flex items-center gap-1">
 					<Button
 						size="sm"
+						variant="primary"
+						className="text-xs h-5 py-0 px-2"
+						onClick={() => handleInstall("project")}
+						disabled={isInstalling}>
+						{isInstalling ? t("marketplace:skills.installing") : t("marketplace:skills.install")}
+					</Button>
+					<Button
+						size="sm"
 						variant="secondary"
 						className="text-xs h-5 py-0 px-2"
-						onClick={handleViewOnGitHub}>
-						{t("marketplace:skills.viewOnGitHub")}
+						onClick={() => handleInstall("global")}
+						disabled={isInstalling}
+						title={t("marketplace:skills.installGlobalTooltip")}>
+						{t("marketplace:skills.installGlobal")}
 					</Button>
 				</div>
 			</div>
