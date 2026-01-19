@@ -159,6 +159,10 @@
 		"allCategories": "ทั้งหมด",
 		"resultsCount": "พบ {{count}} ทักษะ",
 		"noResults": "ไม่พบทักษะที่ตรงกับเกณฑ์ของคุณ",
-		"viewOnGitHub": "ดูบน GitHub"
+		"viewOnGitHub": "ดูบน GitHub",
+		"install": "ติดตั้ง",
+		"installGlobal": "ทั่วไป",
+		"installGlobalTooltip": "ติดตั้งในการกำหนดค่าทั่วไป (ใช้ได้ในทุกพื้นที่ทำงาน)",
+		"installing": "กำลังติดตั้ง..."
 	}
 }

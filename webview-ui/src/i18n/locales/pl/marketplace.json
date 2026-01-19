@@ -159,6 +159,10 @@
 		"allCategories": "Wszystkie",
 		"resultsCount": "Znaleziono {{count}} umiejętności",
 		"noResults": "Nie znaleziono umiejętności pasujących do twoich kryteriów",
-		"viewOnGitHub": "Zobacz na GitHubie"
+		"viewOnGitHub": "Zobacz na GitHubie",
+		"install": "Zainstaluj",
+		"installGlobal": "Globalnie",
+		"installGlobalTooltip": "Zainstaluj w konfiguracji globalnej (dostępne we wszystkich przestrzeniach roboczych)",
+		"installing": "Instalowanie..."
 	}
 }

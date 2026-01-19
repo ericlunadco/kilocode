@@ -159,6 +159,10 @@
 		"allCategories": "すべて",
 		"resultsCount": "{{count}}個のスキルが見つかりました",
 		"noResults": "条件に一致するスキルが見つかりません",
-		"viewOnGitHub": "GitHubで表示"
+		"viewOnGitHub": "GitHubで表示",
+		"install": "インストール",
+		"installGlobal": "グローバル",
+		"installGlobalTooltip": "グローバル設定にインストール（すべてのワークスペースで利用可能）",
+		"installing": "インストール中..."
 	}
 }

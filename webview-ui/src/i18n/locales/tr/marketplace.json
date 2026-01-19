@@ -159,6 +159,10 @@
 		"allCategories": "Tümü",
 		"resultsCount": "{{count}} beceri bulundu",
 		"noResults": "Kriterlerinize uyan beceri bulunamadı",
-		"viewOnGitHub": "GitHub'da görüntüle"
+		"viewOnGitHub": "GitHub'da görüntüle",
+		"install": "Yükle",
+		"installGlobal": "Genel",
+		"installGlobalTooltip": "Genel yapılandırmaya yükle (tüm çalışma alanlarında kullanılabilir)",
+		"installing": "Yükleniyor..."
 	}
 }

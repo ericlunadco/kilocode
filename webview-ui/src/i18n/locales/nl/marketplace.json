@@ -159,6 +159,10 @@
 		"allCategories": "Alle",
 		"resultsCount": "{{count}} skills gevonden",
 		"noResults": "Geen skills gevonden die aan je criteria voldoen",
-		"viewOnGitHub": "Bekijken op GitHub"
+		"viewOnGitHub": "Bekijken op GitHub",
+		"install": "Installeren",
+		"installGlobal": "Globaal",
+		"installGlobalTooltip": "Installeren in globale configuratie (beschikbaar in alle werkruimtes)",
+		"installing": "Installeren..."
 	}
 }

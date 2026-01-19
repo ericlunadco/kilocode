@@ -159,6 +159,10 @@
 		"allCategories": "Vše",
 		"resultsCount": "Nalezeno {{count}} dovedností",
 		"noResults": "Nenalezeny žádné dovednosti odpovídající tvým kritériím",
-		"viewOnGitHub": "Zobrazit na GitHubu"
+		"viewOnGitHub": "Zobrazit na GitHubu",
+		"install": "Instalovat",
+		"installGlobal": "Globální",
+		"installGlobalTooltip": "Instalovat do globální konfigurace (dostupné ve všech pracovních prostorech)",
+		"installing": "Instalace..."
 	}
 }

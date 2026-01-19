@@ -161,6 +161,10 @@
 		"allCategories": "Toutes",
 		"resultsCount": "{{count}} compétences trouvées",
 		"noResults": "Aucune compétence ne correspond à tes critères",
-		"viewOnGitHub": "Voir sur GitHub"
+		"viewOnGitHub": "Voir sur GitHub",
+		"install": "Installer",
+		"installGlobal": "Global",
+		"installGlobalTooltip": "Installer dans la configuration globale (disponible dans tous les espaces de travail)",
+		"installing": "Installation..."
 	}
 }

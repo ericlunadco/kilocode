@@ -159,6 +159,10 @@
 		"allCategories": "Усі",
 		"resultsCount": "Знайдено {{count}} навичок",
 		"noResults": "Не знайдено навичок, що відповідають твоїм критеріям",
-		"viewOnGitHub": "Переглянути на GitHub"
+		"viewOnGitHub": "Переглянути на GitHub",
+		"install": "Встановити",
+		"installGlobal": "Глобально",
+		"installGlobalTooltip": "Встановити в глобальну конфігурацію (доступно в усіх робочих просторах)",
+		"installing": "Встановлення..."
 	}
 }

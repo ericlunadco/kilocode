@@ -159,6 +159,10 @@
 		"allCategories": "सभी",
 		"resultsCount": "{{count}} स्किल्स मिले",
 		"noResults": "आपके मापदंडों से मेल खाने वाले कोई स्किल्स नहीं मिले",
-		"viewOnGitHub": "GitHub पर देखें"
+		"viewOnGitHub": "GitHub पर देखें",
+		"install": "इंस्टॉल करें",
+		"installGlobal": "ग्लोबल",
+		"installGlobalTooltip": "ग्लोबल कॉन्फ़िगरेशन में इंस्टॉल करें (सभी वर्कस्पेस में उपलब्ध)",
+		"installing": "इंस्टॉल हो रहा है..."
 	}
 }

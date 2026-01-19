@@ -159,6 +159,10 @@
 		"allCategories": "全部",
 		"resultsCount": "找到 {{count}} 個技能",
 		"noResults": "找不到符合條件的技能",
-		"viewOnGitHub": "在 GitHub 上檢視"
+		"viewOnGitHub": "在 GitHub 上檢視",
+		"install": "安裝",
+		"installGlobal": "全域",
+		"installGlobalTooltip": "安裝到全域設定（在所有工作區中可用）",
+		"installing": "正在安裝..."
 	}
 }
