@@ -161,8 +161,7 @@
 		"noResults": "Nenalezeny žádné dovednosti odpovídající tvým kritériím",
 		"viewOnGitHub": "Zobrazit na GitHubu",
 		"install": "Instalovat",
-		"installGlobal": "Globální",
-		"installGlobalTooltip": "Instalovat do globální konfigurace (dostupné ve všech pracovních prostorech)",
+		"installTitle": "Instalovat dovednost {{name}}",
 		"installing": "Instalace..."
 	}
 }

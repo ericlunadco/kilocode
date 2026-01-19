@@ -161,8 +161,7 @@
 		"noResults": "Tidak ada skill yang cocok dengan kriteria Anda",
 		"viewOnGitHub": "Lihat di GitHub",
 		"install": "Instal",
-		"installGlobal": "Global",
-		"installGlobalTooltip": "Instal ke konfigurasi global (tersedia di semua ruang kerja)",
+		"installTitle": "Instal skill {{name}}",
 		"installing": "Menginstal..."
 	}
 }

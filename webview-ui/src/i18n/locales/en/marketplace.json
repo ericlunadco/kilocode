@@ -161,8 +161,7 @@
 		"noResults": "No skills found matching your criteria",
 		"viewOnGitHub": "View on GitHub",
 		"install": "Install",
-		"installGlobal": "Global",
-		"installGlobalTooltip": "Install to global configuration (available in all workspaces)",
+		"installTitle": "Install {{name}} Skill",
 		"installing": "Installing..."
 	}
 }

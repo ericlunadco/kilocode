@@ -161,8 +161,7 @@
 		"noResults": "Nessuna skill trovata corrispondente ai tuoi criteri",
 		"viewOnGitHub": "Visualizza su GitHub",
 		"install": "Installa",
-		"installGlobal": "Globale",
-		"installGlobalTooltip": "Installa nella configurazione globale (disponibile in tutti gli spazi di lavoro)",
+		"installTitle": "Installa skill {{name}}",
 		"installing": "Installazione..."
 	}
 }

@@ -161,8 +161,7 @@
 		"noResults": "Kriterlerinize uyan beceri bulunamadı",
 		"viewOnGitHub": "GitHub'da görüntüle",
 		"install": "Yükle",
-		"installGlobal": "Genel",
-		"installGlobalTooltip": "Genel yapılandırmaya yükle (tüm çalışma alanlarında kullanılabilir)",
+		"installTitle": "{{name}} becerisini yükle",
 		"installing": "Yükleniyor..."
 	}
 }

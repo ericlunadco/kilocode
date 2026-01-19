@@ -161,8 +161,7 @@
 		"noResults": "条件に一致するスキルが見つかりません",
 		"viewOnGitHub": "GitHubで表示",
 		"install": "インストール",
-		"installGlobal": "グローバル",
-		"installGlobalTooltip": "グローバル設定にインストール（すべてのワークスペースで利用可能）",
+		"installTitle": "{{name}}スキルをインストール",
 		"installing": "インストール中..."
 	}
 }

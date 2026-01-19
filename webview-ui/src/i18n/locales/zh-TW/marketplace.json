@@ -161,8 +161,7 @@
 		"noResults": "找不到符合條件的技能",
 		"viewOnGitHub": "在 GitHub 上檢視",
 		"install": "安裝",
-		"installGlobal": "全域",
-		"installGlobalTooltip": "安裝到全域設定（在所有工作區中可用）",
+		"installTitle": "安裝 {{name}} 技能",
 		"installing": "正在安裝..."
 	}
 }

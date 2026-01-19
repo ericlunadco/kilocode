@@ -161,8 +161,7 @@
 		"noResults": "조건에 맞는 스킬을 찾을 수 없습니다",
 		"viewOnGitHub": "GitHub에서 보기",
 		"install": "설치",
-		"installGlobal": "전역",
-		"installGlobalTooltip": "전역 설정에 설치 (모든 워크스페이스에서 사용 가능)",
+		"installTitle": "{{name}} 스킬 설치",
 		"installing": "설치 중..."
 	}
 }

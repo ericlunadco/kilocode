@@ -161,8 +161,7 @@
 		"noResults": "Geen skills gevonden die aan je criteria voldoen",
 		"viewOnGitHub": "Bekijken op GitHub",
 		"install": "Installeren",
-		"installGlobal": "Globaal",
-		"installGlobalTooltip": "Installeren in globale configuratie (beschikbaar in alle werkruimtes)",
+		"installTitle": "Skill {{name}} installeren",
 		"installing": "Installeren..."
 	}
 }

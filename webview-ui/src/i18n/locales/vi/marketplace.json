@@ -161,8 +161,7 @@
 		"noResults": "Không tìm thấy kỹ năng nào phù hợp với tiêu chí của bạn",
 		"viewOnGitHub": "Xem trên GitHub",
 		"install": "Cài đặt",
-		"installGlobal": "Toàn cục",
-		"installGlobalTooltip": "Cài đặt vào cấu hình toàn cục (có sẵn trong tất cả các không gian làm việc)",
+		"installTitle": "Cài đặt kỹ năng {{name}}",
 		"installing": "Đang cài đặt..."
 	}
 }

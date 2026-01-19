@@ -161,8 +161,7 @@
 		"noResults": "Nie znaleziono umiejętności pasujących do twoich kryteriów",
 		"viewOnGitHub": "Zobacz na GitHubie",
 		"install": "Zainstaluj",
-		"installGlobal": "Globalnie",
-		"installGlobalTooltip": "Zainstaluj w konfiguracji globalnej (dostępne we wszystkich przestrzeniach roboczych)",
+		"installTitle": "Zainstaluj umiejętność {{name}}",
 		"installing": "Instalowanie..."
 	}
 }

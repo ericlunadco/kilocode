@@ -161,8 +161,7 @@
 		"noResults": "لم يتم العثور على مهارات تطابق معاييرك",
 		"viewOnGitHub": "عرض على GitHub",
 		"install": "تثبيت",
-		"installGlobal": "عام",
-		"installGlobalTooltip": "تثبيت في الإعدادات العامة (متاح في جميع مساحات العمل)",
+		"installTitle": "تثبيت مهارة {{name}}",
 		"installing": "جارٍ التثبيت..."
 	}
 }

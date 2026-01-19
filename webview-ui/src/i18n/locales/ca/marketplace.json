@@ -163,8 +163,7 @@
 		"noResults": "No s'han trobat habilitats que coincideixin amb els teus criteris",
 		"viewOnGitHub": "Veure a GitHub",
 		"install": "Instal·lar",
-		"installGlobal": "Global",
-		"installGlobalTooltip": "Instal·lar a la configuració global (disponible a tots els espais de treball)",
+		"installTitle": "Instal·lar habilitat {{name}}",
 		"installing": "Instal·lant..."
 	}
 }

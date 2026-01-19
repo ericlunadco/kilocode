@@ -163,8 +163,7 @@
 		"noResults": "No se encontraron habilidades que coincidan con tus criterios",
 		"viewOnGitHub": "Ver en GitHub",
 		"install": "Instalar",
-		"installGlobal": "Global",
-		"installGlobalTooltip": "Instalar en la configuración global (disponible en todos los espacios de trabajo)",
+		"installTitle": "Instalar habilidad {{name}}",
 		"installing": "Instalando..."
 	}
 }

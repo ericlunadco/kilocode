@@ -163,8 +163,7 @@
 		"noResults": "Aucune compétence ne correspond à tes critères",
 		"viewOnGitHub": "Voir sur GitHub",
 		"install": "Installer",
-		"installGlobal": "Global",
-		"installGlobalTooltip": "Installer dans la configuration globale (disponible dans tous les espaces de travail)",
+		"installTitle": "Installer la compétence {{name}}",
 		"installing": "Installation..."
 	}
 }
