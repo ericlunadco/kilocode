@@ -2,6 +2,7 @@ import * as vscode from "vscode"
 import * as path from "path"
 import * as fs from "fs/promises"
 import * as yaml from "yaml"
+// kilocode_change start - Added SkillMarketplaceItem import
 import type {
 	MarketplaceItem,
 	MarketplaceItemType,
@@ -9,6 +10,7 @@ import type {
 	McpParameter,
 	SkillMarketplaceItem,
 } from "@roo-code/types"
+// kilocode_change end
 import { GlobalFileNames } from "../../shared/globalFileNames"
 import { ensureSettingsDirectoryExists } from "../../utils/globalContext"
 import type { CustomModesManager } from "../../core/config/CustomModesManager"
